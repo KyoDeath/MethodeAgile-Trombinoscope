@@ -10,7 +10,7 @@ from fastapi import Request
 app = FastAPI()
 
 # Dossier pour stocker les photos
-PHOTO_DIR = "photos"
+PHOTO_DIR = "../photos"
 os.makedirs(PHOTO_DIR, exist_ok=True)
 
 # Dictionnaire en mémoire pour stocker les personnes
