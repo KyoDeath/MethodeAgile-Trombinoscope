@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from app.routes import users
-from app.db.database import engine, Base
-
+from app.db.database import engine, Base, SessionLocal
 
 Base.metadata.create_all(bind=engine)
 

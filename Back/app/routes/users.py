@@ -8,4 +8,6 @@ router = APIRouter()
 
 @router.get("/", response_model=list[UserSchema])
 def get_users(db: Session = Depends(get_db)):
+    users = db.query(User).all()
+    print(f"Utilisateurs : {users}")
     return db.query(User).all()
