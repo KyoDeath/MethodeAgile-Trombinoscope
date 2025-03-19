@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+
+const people = [
+  { id: 1, name: "Jeanne Dupont", photo: "https://via.placeholder.com/150", email: "lorem@ipsum-dolor.fr", phone: "+336319389192" },
+  { id: 2, name: "Hugo Charles", photo: "https://via.placeholder.com/150", email: "lorem@ipsum-dolor.fr", phone: "+336319389192" },
+  { id: 3, name: "Emilie Casey", photo: "https://via.placeholder.com/150", email: "lorem@ipsum-dolor.fr", phone: "+336319389192" },
+  { id: 4, name: "Marie Wei", photo: "https://via.placeholder.com/150", email: "lorem@ipsum-dolor.fr", phone: "+336319389192" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [profiles, setProfiles] = useState(people);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="dashboard">
+      <aside className="sidebar">
+        <div className="logo-container">
+          <img src="/homme-debout-silhouette-noire_318-53..." alt="Logo" className="logo" />
+        </div>
+        <nav>
+          <ul>
+            <li>Trombinoscope</li>
+            <li>Liste</li>
+          </ul>
+        </nav>
+      </aside>
+      <main className="main-content">
+        <header className="search-header">
+          <input type="text" placeholder="Rechercher un profil" className="search-bar" />
+          <button className="add-button">Créer une fiche +</button>
+        </header>
+        <div className="grid">
+          {profiles.map((person) => (
+            <div key={person.id} className="card">
+              <img src={person.photo} alt={person.name} className="photo" />
+              <div className="card-info">
+                <h2>{person.name}</h2>
+                <p>Master 1 - Droit des entreprises</p>
+                <a href={`mailto:${person.email}`}>{person.email}</a>
+                <p>{person.phone}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
